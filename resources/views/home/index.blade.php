@@ -113,10 +113,9 @@
 		</tr>
 	</thead>
 	<tbody>
-    //pegando em looping os dados da tabela de produtos
+    <!-----pegando em looping os dados da tabela de produtos e inserindo em uma Table no front --->
 		@foreach ($produtos as $item)
 		<tr>
-
 			<td>{{ $item->name }}</td>
 			<td>{{ $item->price }}</td>
 			<td>{{ $item->type }}</td>
@@ -134,6 +133,10 @@
                             <button type="button" data-dismiss="modal" aria-label="Close" class="close">
                                 <span aria-hidden="true">×</span>
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</tr>
 		@endforeach
 	</tbody>
