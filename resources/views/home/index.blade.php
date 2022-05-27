@@ -101,7 +101,7 @@
 						  <div class="col-sm-9">
 						    <div class="card col">
 						      <div class="card-body text-white bg-dark ">
-						        <h5 class="card-title">Descrição</h5>
+						        <h5 class="card-title">Produtos</h5>
 								<table class="table table-bordered text-white">
 	<thead>
 		<tr>
@@ -110,6 +110,7 @@
 			<th>Preço</th>
 			<th>Tipo</th>
 			<th>Detalhes</th>
+
 		</tr>
 	</thead>
 	<tbody>
@@ -119,30 +120,40 @@
 			<td>{{ $item->name }}</td>
 			<td>{{ $item->price }}</td>
 			<td>{{ $item->type }}</td>
+            <input class="d-none" id="ip{{$item->id}}" value="{{$item->desc}}">
 			<td>
-                <button type="" data-toggle="modal" :data-target="'#modal-info' +$item.id" class="btn btn-primary d-inline btn-sm">
+                <button type="" id="{{$item->id}}" name="bao" data-toggle="modal" data-target="#myModal" class="btn btn-primary d-inline btn-sm">
                     <i class="fa fa-info"></i> Informações
                 </button>
 			</td>
-            <div :id="'modal-info' +item.id" tabindex="1" role="dialog" aria-labelledby="modal-info" aria-hidden="true" class="modal fade">
-                <div role="document" class="modal-dialog modal- modal-dialog-centered modal-sm">
-                    <div class="modal-content" style="width: 80vw;">
-                        <div class="modal-header dp-flex flex-direction-column">
-                            <h3 id="modal-title-default" class="modal-title">
-                                <i class="fa fa-info"></i> Informações</h3>
-                            <button type="button" data-dismiss="modal" aria-label="Close" class="close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 		</tr>
 		@endforeach
-	</tbody>
+    <div id="myModal" class="modal fade" role="dialog ">
+        <div class=" modal-dialog modal-dialog-centered">
+
+            <!-- Modal content-->
+            <div class="modal-content text-white bg-dark border rounded ">
+                <div class="modal-header">
+                    <h4 class="modal-title">Descrição do Produto</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p id="pontos"> </p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <p>@2022</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </tbody>
 </table>
-
-
 
                               </div>
                             </div>
@@ -162,7 +173,7 @@
 					<footer>
 						<div class="footer-container">
 							<div class="footer-info">
-								<p>@ 2022 - Vitrine Tech</p>
+								<p>@ 2022 - Vitrine Tech - Rogerin</p>
 							</div>
 						</div>
 						<img class="scroll" src="./src/icons/scroll-top.svg" alt="icone scroll" onclick="subirTopo()">
@@ -211,6 +222,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script>
+    $(document.getElementsByName('bao')).click(function () {
+        var contentPanelId = jQuery(this).attr("id");
+        var ValueInputDesc = $('#ip'+ contentPanelId).val();
+        $("#modal_body");
+        $("#pontos").text(ValueInputDesc)
+    });
+</script>
 
 </body>
 
